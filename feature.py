@@ -148,6 +148,9 @@ def OpenMatFile(Directory):
 if __name__ == '__main__':
     if len(sys.argv)!=2:
         print("This program needs one input argument.\nThis argument should be the file type of the images to search in the TestImages directory.\nEx.: python feature.py .jpg")
+    elif not os.path.isdir("./TestImages/"):
+        os.makedirs("./TestImages/")
+        print("The images need to be inside a 'TestImages' directory.")
     else:
         FileType = sys.argv[1]
         test = matching("./TestImages/",FileType)
