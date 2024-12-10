@@ -132,8 +132,8 @@ class matching:
     
 def saveMat(dict):
     #save mat file and open it as binary
-    for filename, value in dict.items():
-        savemat("./"+filename+".mat",value,long_field_names=True, do_compression=True)
+    for i, (filename, value) in enumerate(dict.items()):
+        savemat(f"./kp_{int(i):04d}.mat",value,long_field_names=True, do_compression=True)
 
 def OpenMatFile(Directory):
     for filename in os.listdir(Directory):
