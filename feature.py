@@ -127,12 +127,13 @@ class matching:
             pt1, desc1 = self.__GetKPAndDesc__(index)
 
             filename1, _ = os.path.splitext(self.ImageNames[index])
-            Dict['Feature_'+str(filename1)] = {'kp':pt1,'desc':desc1}
+            Dict['kp'+str(filename1)] = {'kp':pt1,'desc':desc1}
         return Dict
     
 def saveMat(dict):
     #save mat file and open it as binary
-    savemat("/tmp/data.mat",dict,long_field_names=True, do_compression=True)
+    for filename, value in dict.items():
+        savemat("./"+filename+".mat",value,long_field_names=True, do_compression=True)
 
 def OpenMatFile(Directory):
     for filename in os.listdir(Directory):
@@ -157,5 +158,5 @@ if __name__ == '__main__':
         test.SIFT()
         FeatureDict = test.SaveToDictionary()
 
-        savemat("./kp.mat",FeatureDict,long_field_names=True, do_compression=True)
+        saveMat(FeatureDict)
     
