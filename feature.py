@@ -2,7 +2,6 @@ from scipy.io import savemat, loadmat
 import cv2  #install opencv-python and opencv-contrib-python
 import numpy as np
 import os
-import matplotlib.pyplot as plt
 from typing import List, Dict, Tuple, Any
 import sys
 
